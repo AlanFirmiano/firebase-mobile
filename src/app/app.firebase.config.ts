@@ -1,4 +1,4 @@
-export const FIREBASE_CONFIG = var config = {
+export const FIREBASE_CONFIG = {
   apiKey: "AIzaSyBntnqcdT8Vlnl685DsyhUxoERTwUVtbxU",
   authDomain: "fir-auth-d190c.firebaseapp.com",
   databaseURL: "https://fir-auth-d190c.firebaseio.com",
