@@ -6,16 +6,18 @@ import { MyApp } from './app.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import {AngularFireModule} from "angularfire2";
-import {FIREBASE_CONFIG} from "./app.firebase.config";
-import {LoginPage} from "../pages/login/login";
-import {HomePage} from "../pages/home/home";
+import { AngularFireModule } from "angularfire2";
+import { FIREBASE_CONFIG } from "./app.firebase.config";
+import { LoginPage } from "../pages/login/login";
+import { HomePage } from "../pages/home/home";
+import { ProfilePage } from "../pages/profile/profile";
 
 @NgModule({
   declarations: [
     MyApp,
     LoginPage,
-    HomePage
+    HomePage,
+    ProfilePage
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,8 @@ import {HomePage} from "../pages/home/home";
   entryComponents: [
     MyApp,
     LoginPage,
-    HomePage
+    HomePage,
+    ProfilePage
   ],
   providers: [
     StatusBar,
