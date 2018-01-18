@@ -23,8 +23,8 @@ export class ProfilePage {
 
   createProfile(profile: Profile){
     this.afAuth.authState.take(1).subscribe(auth=>{
-      this.afDatabase.list(`profile/${auth.uid}`).push(this.profile)
-        .then(() => this.navCtrl.push(HomePage))
+      this.afDatabase.object(`profile/${auth.uid}`).set(this.profile)
+        .then(() => this.navCtrl.setRoot(HomePage))
     })
   }
 }
