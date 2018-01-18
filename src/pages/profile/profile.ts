@@ -1,13 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {AngularFireAuth} from "angularfire2/auth";
-
-/**
- * Generated class for the ProfilePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import {Profile} from "../../models/profile";
+import {AngularFireDatabase} from "angularfire2/database";
+import {HomePage} from "../home/home";
 
 @IonicPage()
 @Component({
@@ -16,14 +12,19 @@ import {AngularFireAuth} from "angularfire2/auth";
 })
 export class ProfilePage {
 
+  profile = {} as Profile;
+
   constructor(
     private afAuth:AngularFireAuth,
+    private afDatabase: AngularFireDatabase,
     public navCtrl: NavController,
     public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfilePage');
+  createProfile(profile: Profile){
+    this.afAuth.authState.take(1).subscribe(auth=>{
+      this.afDatabase.list(`profile/${auth.uid}`).push(this.profile)
+        .then(() => this.navCtrl.push(HomePage))
+    })
   }
-
 }
